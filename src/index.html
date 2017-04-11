@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html  ng-app="mainApp">
+<head>
+
+    <!-- CSS (load bootstrap) -->
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/agile.css">
+    <style>
+        .navbar { border-radius:0; }
+    </style>
+
+    <!-- JS (load angular, ui-router, and our custom js file) -->
+    <script src="assets/scripts/angular/angular.js"></script>
+    <script src="assets/scripts/angular/angular-ui-router.min.js"></script>
+    <script src="assets/scripts/jquery/jquery.min.js"></script>
+    <script src="app.js"></script>
+    <script src="app/components/stackManagemet/stackManagemetController.js"></script>
+</head>
+
+<!-- apply our angular app to our site -->
+<body class = "body">
+   <div id="wrapper">
+
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav nav nav-tabs" id="sidebar-nav">
+                <li class="sidebar-brand li_text_indent">
+                    <a a href="#menu-toggle"  id="menu-toggle"><span  class = "li_a_text" >
+                        AGILE CLOUDS<!--Agile Clouds--></span><span class="glyphicon glyphicon-transfer icon-right"></span>
+                    </a>
+                </li>
+                <li class = "li_text_indent"><a  ui-sref="home"><span  class = "li_a_text" >Home</span><span class="glyphicon glyphicon-home icon-right"></span></a></li>
+                <li class = "li_text_indent"><a  ui-sref="stackManagement"> <span  class = "li_a_text" > Manage Stacks</span><span class="glyphicon glyphicon-tasks icon-right"></span></a>
+                    <ul class = "sub-menu">
+                        <li class = "li_text_indent"><a href="#"> <span  class = "li_a_text" >Build</span></a></li>
+                        <li class = "li_text_indent"><a href="#"> <span  class = "li_a_text" >View</span></span></a></li>
+                        <li class = "li_text_indent"><a href="#"> <span  class = "li_a_text" >Restart</span></span></a></li>
+                        <li class = "li_text_indent"><a href="#"> <span  class = "li_a_text" >Search</span></a></li>
+                    </ul>
+                </li>
+                
+                
+                <li class = "li_text_indent"><a ui-sref="about"><span  class = "li_a_text" >About</span><span class="    glyphicon glyphicon-info-sign icon-right"></span></a></li>
+            </ul>
+        </div>
+        <!-- /#sidebar-wrapper -->
+
+        <!-- Page Content -->
+        <div class="tab-content">
+            <div class="tab-pane active" id="dashboard">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-lg-12" style = "padding:0px;">
+                          <!-- <nav class="navbar navbar-inverse" role="navigation">
+                                <div class="navbar-header">
+                                    <a class="navbar-brand" ui-sref="#">Example Page</a>
+                                </div>
+                            </nav>-->
+
+                            <!-- MAIN CONTENT -->
+                            <!-- THIS IS WHERE WE WILL INJECT OUR CONTENT ============================== -->
+                            <div class="col-sm-12"    >
+                                <div ui-view></div>
+                            </div>
+
+                            <div class="text-center">
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<!-- NAVIGATION -->
+<script src="assets/scripts/agile.js"></script>
+</body>
+</html>

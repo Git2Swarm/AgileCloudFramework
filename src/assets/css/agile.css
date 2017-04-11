@@ -1,0 +1,226 @@
+/*!
+ * Start Bootstrap - Simple Sidebar HTML Template (http://startbootstrap.com)
+ * Code licensed under the Apache License v2.0.
+ * For details, see http://www.apache.org/licenses/LICENSE-2.0.
+ */
+
+/* Toggle Styles */
+.body{
+	background-color:#f3f3f3;
+}
+.no-padding{
+	padding:0px;
+}
+.content-holder{
+	background-color:#ffffff;
+	border: 1px solid #e9e9e9;
+}
+.content-head{
+	background-color:#f3f3f3;
+	color: #767676;
+    border-bottom: 1px solid #e9e9e9;
+}
+
+
+/* side bar start ///////////////////////////////////////////////////////////////////////////////*/
+.nav-tabs>li{
+    float: none;
+}
+.nav-tabs{
+    border-bottom: 0;
+}
+.nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover{
+    margin: 0;
+    border-radius: 0;
+}
+
+#wrapper {
+    padding-left: 0;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+#wrapper.toggled {
+    padding-left: 250px;
+}
+
+#sidebar-wrapper {
+    z-index: 1000;
+    position: fixed;
+    left: 50px;
+    width: 50px;
+    height: 100%;
+    margin-left: -50px;
+    overflow-y: auto;
+    background: rgb(45, 62, 99);
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+#wrapper.toggled #sidebar-wrapper {
+    width: 250px;
+}
+
+#page-content-wrapper {
+    width: 100%;
+    position: absolute;
+    padding: 15px;
+}
+
+#wrapper.toggled #page-content-wrapper {
+    position: absolute;
+    margin-right: -250px;
+}
+
+/* Sidebar Styles */
+
+.sidebar-nav {
+    position: absolute;
+    top: 0;
+    width: 250px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.sidebar-nav li {
+    text-indent: 20px;
+    line-height: 20px;
+	
+}
+.sub-menu-hidden{
+	display:none;
+}
+.sub-menu li a{
+	text-decoration:none;
+	list-style-type:none;
+	
+}
+.sub-menu li{
+	list-style-type:none;
+	font-weight: 500;
+	height:30px;
+}
+.sub-menu li  	a{
+	list-style-type:none;
+	font-weight: 500;
+	height:30px;
+}
+.pd-dropdown>a:after {display: block;}
+.li_text_indent a{
+	height:50px;
+}
+#sidebar-nav{
+	padding-left :-10px;
+}
+.sidebar-nav li a {
+    display: block;
+    //text-decoration: none;
+    color: white;
+	border-left:4px solid transparent;
+}
+.nav-tabs>li>a:hover {
+     border-color: transparent ;
+}
+.sidebar-nav li a:hover {
+        background: rgba(0, 0, 0, 0.51);
+	border-left :4px solid orange;
+	border-radius:0px;
+}
+.sidebar-nav li a:active,
+.sidebar-nav li a:focus {
+    //text-decoration: none;
+	border-left :4px solid white;
+	  background:transparent;
+}
+
+.sidebar-nav > .sidebar-brand {
+    height: 50px;
+    font-size: 20px;
+    line-height: 60px;
+	background-color:#141d2f;
+}
+
+.sidebar-nav > .sidebar-brand a {
+    //color: white;
+}
+
+.sidebar-nav > .sidebar-brand a:hover {
+    color: white;
+    //background: none;
+}
+ #wrapper {
+        padding-left: 250px;
+		font-family: Montserrat ;
+        font-size: 15px;
+		font-weight: 700;
+    }
+
+    #wrapper.toggled {
+        padding-left: 50px;
+    }
+    .li_a_text.link_text{
+		display: none ;
+	}
+	.li_text_indent.link_text_indent{
+		text-indent:0px;
+	}
+	.icon-right{
+		float:right;
+	}
+	.icon_left{
+		float:left;
+	}
+    #sidebar-wrapper {
+        width: 250px;
+    }
+
+    #wrapper.toggled #sidebar-wrapper {
+        width: 50px;
+    }
+
+    #page-content-wrapper {
+        padding: 20px;
+        position: relative;
+    }
+
+    #wrapper.toggled #page-content-wrapper {
+        position: relative;
+        margin-right: 0;
+    }
+@media(min-width:768px) {
+    #wrapper {
+        padding-left: 250px;
+    }
+
+    #wrapper.toggled {
+        padding-left: 50px;
+    }
+    .li_a_text.link_text{
+		display: none ;
+	}
+	.li_text_indent.link_text_indent{
+		text-indent:0px;
+	}
+    #sidebar-wrapper {
+        width: 250px;
+    }
+
+    #wrapper.toggled #sidebar-wrapper {
+        width: 50px;
+    }
+
+    #page-content-wrapper {
+        padding: 20px;
+        position: relative;
+    }
+
+    #wrapper.toggled #page-content-wrapper {
+        position: relative;
+        margin-right: 0;
+    }
+}/* side bar end ///////////////////////////////////////////////////////////////////////////////*/

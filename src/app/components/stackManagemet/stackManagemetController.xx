@@ -1,0 +1,169 @@
+App.controller('stackManagemetController', function($scope,$compile,$http) {
+    
+    $scope.state = 'test 222';
+    $scope.jobName = "";
+    $scope.srcUrl  ="";
+    $scope.opsUrl = "";
+    $scope.coutapplicationfile = 0;
+    $scope.coutappendOperationsStack =0;
+    $scope.ApplicationFiles;
+    $scope.OperationStacks;
+    $scope.test = function(id){
+            alert('test'+id);
+    };
+    
+   $scope.appendApplicationFile = function(){
+       $scope.coutapplicationfile = $scope.coutapplicationfile + 1;
+        var myEl = angular.element( document.querySelector( '#divApplicationFile' ) );
+        var toadd = '<div class = "col-xs-12 "><div class = "col-xs-8 col-xs-offset-2  no-padding" id = "'+"divAppFileNumber"+$scope.coutapplicationfile+'">'+
+                        '<div class = "input-group ">'+
+                            '<input type="text" class="form-control ng-pristine ng-untouched ng-valid ng-empty" ng-model ="ApplicationFiles.ApplicationFileNum'+$scope.coutapplicationfile+'" ng-change= "Urlvalidation(ApplicationFiles.ApplicationFileNum'+$scope.coutapplicationfile+', \''+"divAppFileNumber"+$scope.coutapplicationfile+'\')" placeholder="compose file">'+
+                            '<span class="input-group-addon" ng-click="removeDiv(\''+"divAppFileNumber"+$scope.coutapplicationfile+'\');removeApplicationFiles(\'ApplicationFileNum'+$scope.coutapplicationfile+'\');"><i ng-class="{true: \'fa fa-check green-icon\', false: \'fa fa-times red-icon\'}[state.validUsername]" aria-hidden="true" class="glyphicon glyphicon-remove red-icon"></i></span>'+
+                        '</div>'+
+                    '</div></div>';
+        var generated = myEl.append(toadd); 
+        var appendedElement = angular.element( document.querySelector( '#divAppFileNumber'+$scope.coutapplicationfile ) );
+        $compile(appendedElement)($scope);
+        
+   };
+
+   $scope.removeApplicationFiles = function(fileNumber) { 
+        delete $scope.ApplicationFiles[fileNumber];
+   
+    };
+     $scope.removeOperationsStack = function(fileNumber) { 
+ 
+        delete $scope.OperationStacks[fileNumber];
+   
+    }
+   
+    $scope.appendOperationsStack = function(){
+       $scope.coutappendOperationsStack = $scope.coutappendOperationsStack + 1;
+        var myEl = angular.element( document.querySelector( '#divOperationsStack' ) );
+        var toadd = '<div class = "col-xs-12 "><div class = "col-xs-8 col-xs-offset-2 no-padding" id = "'+"divOperationStackNumber"+$scope.coutappendOperationsStack+'">'+
+                        '<div class = "input-group">'+
+                            '<input type="text" class="form-control ng-pristine ng-untouched ng-valid ng-empty"   ng-model ="OperationStacks.OperationStackNum'+$scope.coutappendOperationsStack+'" ng-change= "Urlvalidation(OperationStacks.OperationStackNum'+$scope.coutappendOperationsStack+', \''+"divOperationStackNumber"+$scope.coutappendOperationsStack+'\' )" placeholder="compose file">'+
+                            '<span class="input-group-addon" ng-click="removeDiv(\''+"divOperationStackNumber"+$scope.coutappendOperationsStack+'\');removeOperationsStack(\'OperationStackNum'+$scope.coutappendOperationsStack+'\');"><i ng-class="{true: \'fa fa-check green-icon\', false: \'fa fa-times red-icon\'}[state.validUsername]" aria-hidden="true" class="glyphicon glyphicon-remove red-icon"></i></span>'+
+                        '</div>'+
+                    '</div></div>';
+        var generated = myEl.append(toadd); 
+        var appendedElement = angular.element( document.querySelector( '#divOperationStackNumber'+$scope.coutappendOperationsStack ) );
+        $compile(appendedElement)($scope);
+        
+   };
+   
+    $scope.createJenkinsBuild = function(){
+        var srcURL=""; 
+        var opsURL="";
+        var configURL = $scope.configURL;
+        var buildName = $scope.jobName;
+        
+        var values = $scope.ApplicationFiles;
+        angular.forEach(values, function(value, key) {
+            srcURL = srcURL + value +';' ;
+        });
+        console.log("src url "+srcURL);
+        
+        var values = $scope.OperationStacks;
+        angular.forEach(values, function(value, key) {
+            opsURL = opsURL + value +';' ;
+        });
+        console.log("opsURL "+opsURL); 
+          
+        var jenkinsURL = "https://XAPPADDRX/applauncher/" + "createJenkinsBuild?jobName=" + buildName 
+                                   + "&configGitHubURL=" + configURL
+                                   + "&appsCompose=" + srcURL
+                                   + "&opsCompose=" + opsURL;
+          $http({
+                method : 'GET',
+                url : jenkinsURL
+            }).then(function successCallback(response) {
+                console.log(response)
+            }, function errorCallback(response) {
+                console.log(response.statusText);
+            });
+          $scope.listStack();
+          $scope.jobList();
+    };
+    
+    
+    $scope.startBuild = function() {
+    var buildName =  $scope.jobName;
+    var startBuildUrl = "https://XAPPADDRX/applauncher/"+ "startJenkinsBuild?jobName=" + buildName;
+       $http({
+            method : 'GET',
+                url : startBuildUrl
+            }).then(function successCallback(response) {
+                console.log(response)
+            }, function errorCallback(response) {
+                console.log(response.statusText);
+            });    
+    };
+    
+    
+    $scope.deleteStack = function() {
+    var buildName =  $scope.jobName;
+    var deleteStackUrl = "https://XAPPADDRX/applauncher/"+ "deleteStack?stackName=" + buildName;
+       $http({
+            method : 'GET',
+                url : deleteStackUrl
+            }).then(function successCallback(response) {
+                console.log(response)
+            }, function errorCallback(response) {
+                console.log(response.statusText);
+        });  
+        $scope.listStack();
+        $scope.jobList();
+    };
+     $scope.deleteJob = function(val) {
+         var deleteStackUrl = "https://XAPPADDRX/applauncher/" + "deleteJob?jobName=" + val; 
+          $http({
+                method : 'GET',
+                url : deleteStackUrl
+            }).then(function successCallback(response) {
+                console.log(response)
+            }, function errorCallback(response) {
+                console.log(response.statusText);
+            });
+             $scope.listStack();
+             $scope.jobList();
+    };
+   $scope.removeDiv = function (id){
+         var iEl = angular.element( document.querySelector( '#'+id) );
+         iEl.remove(); 
+         
+        };
+    
+    $scope.jobList = function (){
+        var jobListUrl = "https://XAPPADDRX/applauncher/" + "jobList";
+        $http.get(jobListUrl,{}).success(function (data) {   $scope.jobListDatas =  data ;});                  
+    };                            
+                                
+     $scope.jobList();
+
+    $scope.listStack = function() {
+        var listStackUrl = "http://XSTACKADDRX"; 
+        $http.get(listStackUrl,{}).success(function (data){ $scope.listStackDatas = data ;}); 
+        
+    };
+    $scope.listStack();
+
+    $scope.deleteListStack = function (stackName){
+        /* TODO: check again */
+        var deleteStackUrl =  "https://XAPPADDRX/applauncher/" + "deleteStack" ;
+        $http.get(deleteStackUrl,{'stackName': stackName}).success(function (data){  }); 
+    };
+    $scope.Urlvalidation= function(inputValue, divId){
+         var newStrValue = new RegExp ( '/blob/' );
+        if(newStrValue.test(inputValue) == false  || inputValue == '' ){
+            var id = "#"+divId;
+             $(id).css("border", "1px solid red");
+        }else{
+             var id = "#"+divId;
+            $(id).css("border", "1px solid green");
+        } 
+    };
+    
+    var reloadTimer= setInterval(reloadfunctions, 2000);
+	function reloadfunctions() { $scope.listStack(); $scope.jobList();};
+});
