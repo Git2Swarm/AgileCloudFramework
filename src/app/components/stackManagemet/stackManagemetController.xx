@@ -1,7 +1,7 @@
 
 App.controller('stackManagemetController', function($scope,$compile,$http) {
     $scope.appLauncherUrl = "https://XAPPADDRX/applauncher/";
-    $scope.listStackUrl = "http://XSTACKADDRX"; 
+    $scope.listStackUrl = $scope.appLauncherUrl + "listStack";
     $scope.state = 'test 222';
     $scope.jobName = "";
     $scope.srcUrl  ="";
