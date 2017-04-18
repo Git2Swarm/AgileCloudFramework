@@ -120,9 +120,8 @@ App.controller('stackManagemetController', function($scope,$compile,$http) {
     };
     
     
-    $scope.deleteStack = function() {
-    var buildName =  $scope.jobName;
-    var deleteStackUrl =$scope.appLauncherUrl + "deleteStack?stackName=" + buildName;
+    $scope.deleteStack = function(val) {
+    var deleteStackUrl =$scope.appLauncherUrl + "deleteStack?stackName=" + val;
        $http({
             method : 'GET',
                 url : deleteStackUrl
@@ -130,7 +129,7 @@ App.controller('stackManagemetController', function($scope,$compile,$http) {
                 console.log(response)
             }, function errorCallback(response) {
                 console.log(response.statusText);
-        });  
+        });
         $scope.listStack();
         $scope.jobList();
     };
