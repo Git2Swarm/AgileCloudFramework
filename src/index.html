@@ -14,23 +14,29 @@
     <script src="assets/scripts/angular/angular-ui-router.min.js"></script>
     <script src="assets/scripts/jquery/jquery.min.js"></script>
     <script src="app.js"></script>
-    <script src="app/components/stackManagemet/stackManagemetController.js"></script>
+    <script src="app/components/stackManagement/stackManagementController.js"></script>
+    <script src="app/components/admin/adminController.js"></script>
+    <script src="app/components/visualizer/visualizerController.js"></script>
+    <script src="app/components/cicdEngine/cicdEngineController.js"></script>
+    <script src="app/components/logAggregation/logAggregationController.js"></script>
+    <script src="app/components/containers/containersController.js"></script>
 </head>
 
 <!-- apply our angular app to our site -->
 <body class = "body">
-   <div id="wrapper">
-
+    <div id="wrapper">
         <!-- Sidebar -->
         <div id="sidebar-wrapper">
             <ul class="sidebar-nav nav nav-tabs" id="sidebar-nav">
                 <li class="sidebar-brand li_text_indent">
                     <a a href="#menu-toggle"  id="menu-toggle"><span  class = "li_a_text" >
-                        AGILE CLOUDS<!--Agile Clouds--></span><span class="glyphicon glyphicon-transfer icon-right"></span>
+                        AGILE CLOUDS<!--Agile Clouds--></span><span class="glyphicon glyphicon-transfer icon-left"></span>
                     </a>
                 </li>
-                <li class = "li_text_indent"><a  ui-sref="home"><span  class = "li_a_text" >Home</span><span class="glyphicon glyphicon-home icon-right"></span></a></li>
-                <li class = "li_text_indent"><a  ui-sref="stackManagement"> <span  class = "li_a_text" > Manage Stacks</span><span class="glyphicon glyphicon-tasks icon-right"></span></a>
+                <li class = "li_text_indent"><a  ui-sref="home" style = "background-color:gray"><span  class = "li_a_text">Home</span><span class="glyphicon glyphicon-home icon-right"></span></a></li>
+                <li class = "li_text_indent"><a ui-sref="admin"><span  class = "li_a_text" >Admin</span><span class="glyphicon glyphicon-user icon-right"></span></a></li>
+
+               <li class = "li_text_indent"><a  ui-sref="stackManagement"> <span  class = "li_a_text" > Manage Stacks</span><span class="glyphicon glyphicon-th-list icon-right"></span></a>
                     <ul class = "sub-menu">
                         <li class = "li_text_indent"><a href="#"> <span  class = "li_a_text" >Build</span></a></li>
                         <li class = "li_text_indent"><a href="#"> <span  class = "li_a_text" >View</span></span></a></li>
@@ -38,9 +44,48 @@
                         <li class = "li_text_indent"><a href="#"> <span  class = "li_a_text" >Search</span></a></li>
                     </ul>
                 </li>
-                
-                
-                <li class = "li_text_indent"><a ui-sref="about"><span  class = "li_a_text" >About</span><span class="    glyphicon glyphicon-info-sign icon-right"></span></a></li>
+                <li class = "li_text_indent"><a  ui-sref="projects"> <span  class = "li_a_text" > Projects</span><span class="glyphicon glyphicon-th-list icon-right"></span></a>
+                    <ul class = "sub-menu">
+                        <li class = "li_text_indent"><a href="#"> <span  class = "li_a_text" >Build</span></a></li>
+                        <li class = "li_text_indent"><a href="#"> <span  class = "li_a_text" >View</span></span></a></li>
+                        <li class = "li_text_indent"><a href="#"> <span  class = "li_a_text" >Restart</span></span></a></li>
+                        <li class = "li_text_indent"><a href="#"> <span  class = "li_a_text" >Search</span></a></li>
+                    </ul>
+                </li>
+
+                <li class = "li_text_indent"><a  ui-sref="appStacks"> <span  class = "li_a_text" > App Stacks</span><span class="glyphicon glyphicon-th-list icon-right"></span></a>
+                    <ul class = "sub-menu">
+                        <li class = "li_text_indent"><a href="#"> <span  class = "li_a_text" >Build</span></a></li>
+                        <li class = "li_text_indent"><a href="#"> <span  class = "li_a_text" >View</span></span></a></li>
+                        <li class = "li_text_indent"><a href="#"> <span  class = "li_a_text" >Restart</span></span></a></li>
+                        <li class = "li_text_indent"><a href="#"> <span  class = "li_a_text" >Search</span></a></li>
+                    </ul>
+                </li>
+
+                <li class = "li_text_indent"><a  ui-sref="environments"> <span  class = "li_a_text" > Environments</span><span class="glyphicon glyphicon-th-list icon-right"></span></a>
+                    <ul class = "sub-menu">
+                        <li class = "li_text_indent"><a href="#"> <span  class = "li_a_text" >Build</span></a></li>
+                        <li class = "li_text_indent"><a href="#"> <span  class = "li_a_text" >View</span></span></a></li>
+                        <li class = "li_text_indent"><a href="#"> <span  class = "li_a_text" >Restart</span></span></a></li>
+                        <li class = "li_text_indent"><a href="#"> <span  class = "li_a_text" >Search</span></a></li>
+                    </ul>
+                </li>
+                <li class = "li_text_indent"><a  ui-sref="workFlows"> <span  class = "li_a_text" > Work Flows</span><span class="glyphicon glyphicon-th-list icon-right"></span></a>
+                    <ul class = "sub-menu">
+                        <li class = "li_text_indent"><a href="#"> <span  class = "li_a_text" >Build</span></a></li>
+                        <li class = "li_text_indent"><a href="#"> <span  class = "li_a_text" >View</span></span></a></li>
+                        <li class = "li_text_indent"><a href="#"> <span  class = "li_a_text" >Restart</span></span></a></li>
+                        <li class = "li_text_indent"><a href="#"> <span  class = "li_a_text" >Search</span></a></li>
+                    </ul>
+                </li>
+                <li><br></li>
+                <li class = "li_text_indent"style = "background-color:gray"><a ui-sref="tools"><span  class = "li_a_text" >Tools</span><span class="glyphicon glyphicon-user icon-right"></span></a></li>
+                <li class = "li_text_indent"><a ui-sref="jenkins"><span  class = "li_a_text" >CICD Engine</span><span class="glyphicon glyphicon-th icon-right"></span></a></li>
+                <li class = "li_text_indent"><a ui-sref="artifactory"><span  class = "li_a_text" >Artifactory</span><span class="glyphicon glyphicon-th icon-right"></span></a></li>
+
+               <li class = "li_text_indent"><a ui-sref="visualizer"><span  class = "li_a_text" >Cluster Visualizer</span><span class="glyphicon glyphicon-th icon-right"></span></a></li>
+               <li class = "li_text_indent"><a ui-sref="portainer"><span  class = "li_a_text" >Containers</span><span class="glyphicon glyphicon-th icon-right"></span></a></li>
+               <li class = "li_text_indent"><a ui-sref="kibana"><span  class = "li_a_text" >Log Aggregation</span><span class="glyphicon glyphicon-th icon-right"></span></a></li>
             </ul>
         </div>
         <!-- /#sidebar-wrapper -->
@@ -51,11 +96,6 @@
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-lg-12" style = "padding:0px;">
-                          <!-- <nav class="navbar navbar-inverse" role="navigation">
-                                <div class="navbar-header">
-                                    <a class="navbar-brand" ui-sref="#">Example Page</a>
-                                </div>
-                            </nav>-->
 
                             <!-- MAIN CONTENT -->
                             <!-- THIS IS WHERE WE WILL INJECT OUR CONTENT ============================== -->
@@ -65,7 +105,7 @@
 
                             <div class="text-center">
                             </div>
-                            
+
                         </div>
                     </div>
                 </div>
