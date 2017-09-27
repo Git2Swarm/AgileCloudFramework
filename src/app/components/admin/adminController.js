@@ -10,5 +10,6 @@ App.controller('adminController', function($scope, $sce) {
   $scope.visualizerUrl = {src:"https://" + location.host + "/visualizer/"};
   $scope.kibanaUrl = {src:"https://" + location.host + "/app/kibana/"};
   $scope.portainerUrl = {src:"https://" + location.host + "/portainer/"};
+  $scope.test =  "tesing admin controller ";
 });
 

@@ -63,7 +63,7 @@ App.controller('stackManagementController', function($scope,$compile,$http) {
         }else{
             $(".stackName").css("border","2px solid green");
         }
-         if($scope.configURL === "" || typeof $scope.configURL === "undefined" ) {
+         if($scope.configURL.name === "" || typeof $scope.configURL.name === "undefined" ) {
             $(".configURL").css("border","2px solid red");
         }else{
             $(".configURL").css("border","2px solid green");
@@ -71,7 +71,7 @@ App.controller('stackManagementController', function($scope,$compile,$http) {
         if($scope.ApplicationFiles !== "" || typeof $scope.configURL !== "undefined" ){
             var srcURL="";
             var opsURL="";
-            var configURL = $scope.configURL;
+            var configURL = $scope.configURL.name;
             var buildName = $scope.jobName;
             var values = $scope.ApplicationFiles;
             var errorCounterApplicationFiles =0;
@@ -227,5 +227,20 @@ App.controller('stackManagementController', function($scope,$compile,$http) {
     $(".content-head").click(function() {
         $(this).siblings(".content").toggle();
     });
+
+
+    var clusterLink = "http://" + location.host + "/pipeline/files";
+    $scope.clusterPipeline = function(){
+    $http({
+             method : 'GET',
+             url: clusterLink
+        }).then(function successCallback(response) {
+            console.log(response);
+            $scope.pipelines = response.data;
+        }, function errorCallback(response) {
+            console.log(response.statusText);
+        });
+    };
+    $scope.clusterPipeline();
 });
 
