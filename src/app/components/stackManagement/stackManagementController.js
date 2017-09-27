@@ -229,7 +229,7 @@ App.controller('stackManagementController', function($scope,$compile,$http) {
     });
 
 
-    var clusterLink = "http://" + location.host + "/pipeline/files";
+    var clusterLink = "https://" + location.host + "/pipeline/files";
     $scope.clusterPipeline = function(){
     $http({
              method : 'GET',

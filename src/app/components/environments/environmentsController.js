@@ -168,9 +168,9 @@ App.controller('environmentsController', function($scope,$compile,$http, $parse)
 
     $scope.jsonRecursion = function( data , callType ){
         if(callType == 'POST') {
-            url = 'http://'+location.host+'/envlaunch/';
+            url = 'https://'+location.host+'/envlaunch/';
         } else {
-            url = 'http://'+location.host+'/envlaunch/' + data ;
+            url = 'https://'+location.host+'/envlaunch/' + data ;
         }
         $http({
             method : callType,
@@ -225,7 +225,7 @@ App.controller('environmentsController', function($scope,$compile,$http, $parse)
 $scope.listEnvironmentsFileOrDir = function(){
     $http({
           method : 'GET',
-          url : 'http://'+location.host+'/environment/files'  /* Get the file list */
+          url : 'https://'+location.host+'/environment/files'  /* Get the file list */
       }).then(function successCallback(response) {
         $scope.listEnvironments = response.data;
           console.log(response)
@@ -238,7 +238,7 @@ $scope.listEnvironmentsFileOrDir = function(){
 
 
 $scope.populateFileDetails = function(fileName){
-  var url = 'http://'+location.host+'/environment/files/'+ fileName;  /* Get the file content */
+  var url = 'https://'+location.host+'/environment/files/'+ fileName;  /* Get the file content */
   $http({
     method : 'GET',
     url   : url,
@@ -289,7 +289,7 @@ $scope.populateFileDetails = function(fileName){
 };
 
 $scope.deleteFileDetails = function(fileName){
-  $http.delete('http://'+location.host+'/environment/files/'+fileName).then(function successCallback(response) {
+  $http.delete('https://'+location.host+'/environment/files/'+fileName).then(function successCallback(response) {
     console.log(response);
     $scope.listEnvironmentsFileOrDir();
   }, function errorCallback(response) {
