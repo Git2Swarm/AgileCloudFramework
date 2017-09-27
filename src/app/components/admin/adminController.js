@@ -3,7 +3,7 @@ App.controller('adminController', function($scope, $sce) {
     return $sce.trustAsResourceUrl(src);
   }
 
-  $scope.stackUrl = {src:"https://" + location.host + "/stackmanagement"};
+  $scope.stackUrl = {src:"https://" + location.host + "/agilecloudframework"};
   $scope.adminUrl = {src:"https://" + location.host + "/admin"};
   $scope.jenkinsUrl = {src:"https://" + location.host};
   $scope.artifactoryUrl = {src:"https://" + location.host + "/artifactory"};
